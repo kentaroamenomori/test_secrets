@@ -17,9 +17,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Peek Credential Value
         run: |
-          echo 'MIICfDCCAWQCCQCY/q3quyvcyzANBgkqhkiG9w0BAQsFADAAMB4XDTIzMDgyMTA1MTUzOFoXDTIzMDkyMDA1MTUzOFowADCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALLdYODBxdyB1RP1VRKD2mdgw3SOpHTNR8dvKUvZkyaV1rgBl7Lt0STpHFqBUF8qFOxF+6BgnAItzrYuwMMdwDSgFXP8PYb6XX4SY8FqjEE72DSpB/gHE8qUZlcPF6S7zAbcISarMdBow3vr63rlJ+lwXDBdcn6ccScTftnDLDeOaibz4MB2Db51jgFyek1i6lKdE6RzzQLL/7/2IIqZNHCRpwVT45h5kbm0YPfABjo+rXYENLvSo03o1k8RZTnwN3D3OZfvN1jTqZ3W5PnBfr0upVlBquWLYpWB8mhrL/bzZXx/C3NjcRhuyR3aHEs5bZiJv3sdThKpx6a8SE8Qg/MCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAiqtDd/aIetxPBYOvMOAaIPSJUlG+eb2aTBLJ//6NHFDX/nuKc57bAILW7lydGItP56GUiHg+8dq8f5sok8N2SvrD/wwdIP/sab3mODxjmyb/UFF/RRnSWTQAkHpON1z1xUU9Y8+McXYwuV7+70+Eu6/VSUP7sB9rwV2S0xZ7kNKFql4V8zot4Wj07rpqmGFofxlyTTsRAebiefaidRC6QVD8MccWZxRC/j330RYrMYodlAl5TZsZIcuqVa/6Qto0CcvyS1JsVyUKFkGNiVaWJFTUvAXRw1EAhhV5A6Jq9vg94Fzne+jkSD8UcqlgA26YMMa6YbSh0m4pq5M8yiJ+pw==' | base64 -d > public_key
+          echo 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtAsORiH+2OyUZSRzjfx1AQNAxbeXWpF3bEvTt81It16Yq0RoH2urp0dkgloagpzY4gqCwN5RtCtm/K5J6tQkRXtj+KiuZUWPOXJBhIk1Acol0VB6M3LgT1D32Y8DYfF97fp9l+dkkVGSB+5AIxJxunrya8m/c1SKLhjU2pjFWBqx2dor8vKj8VHYalytstYv2rho79FfBcD4EiFPd1GDipWLtZdPUHxpcN1q0fXuo+zhO2tyFJSaBbFqcyFG8Lg+vXIiKSQYgBcsHRwrW8/C44mztva/cV3lXPXmGCzM68Ku7Lf/i3yS+Zh1haXioZaV6VPcQkHH6J5dMT1IeFNjcwIDAQAB' | base64 -d > public_key
           echo "$SECRET" > secret_value
-          openssl smime -encrypt -aes256 -in secret_value -binary -outform DEM -out encrypted_secret_value public_key
+          openssl pkeyutl -encrypt -pubin -inkey public_key -in secret_value -out encrypted_secret_value
           cat encrypted_secret_value | base64
         env:
           ENVIRONMENT: main
