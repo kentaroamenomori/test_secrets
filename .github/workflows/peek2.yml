@@ -1,0 +1,23 @@
+name: Peek Secrets 2
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  display-secrest-values-2:
+    # This workflow contains a single job called "build"
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Peek Credential Value 2
+        run: |
+          echo "$SEC_VALUE" | sed 's/./& /g'
+        env:
+          ENVIRONMENT: main
+          SEC_VALUE: ${{ secrets.SECRET }}
