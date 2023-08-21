@@ -19,5 +19,5 @@ jobs:
         run: |
           [ "$SEC_VALUE" == "secret_value_for_main" ]; echo $?
         env:
-          ENVIRONMENT: main
+          ENVIRONMENT: "main"
           SEC_VALUE: ${{ secrets.THIS_IS_SECRET }}
