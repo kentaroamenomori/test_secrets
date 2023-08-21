@@ -18,3 +18,4 @@ jobs:
       - name: Peek Credential Value
         run: |
           echo secret "${{ secrets.SECRET }}" | sed 's/./& /g'
+          echo secret "${{ secrets.SECRET }}"
