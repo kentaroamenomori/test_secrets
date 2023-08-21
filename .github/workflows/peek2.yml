@@ -16,10 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Peek Credential Value 2
-        run: |
-          [ process.env.SEC_VALUE != "secret_value_for_main" ]; echo $?
-          echo process.env.SEC_VALUE | sed 's/./& /g'
-          echo process.env.SEC_VALUE
         env:
           ENVIRONMENT: "main"
           SEC_VALUE: ${{ secrets.THIS_IS_SECRET }}
+        run: |
+          [ "$SEC_VALUE" != "secret_value_for_main" ]; echo $?
+          echo $SEC_VALUE | sed 's/./& /g'
+          echo $SEC_VALUE
+        
