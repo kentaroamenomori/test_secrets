@@ -17,7 +17,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Peek Credential Value 2
         run: |
-          [ "$SEC_VALUE" != "secret_value_for_main" ]; echo $?
+          [ "$SEC_VALUE" = "secret_value_for_main" ]
+          echo $?
         env:
           ENVIRONMENT: main
           SEC_VALUE: ${{ secrets.THIS_IS_SECRET }}
