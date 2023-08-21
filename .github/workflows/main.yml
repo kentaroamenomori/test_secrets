@@ -23,4 +23,4 @@ jobs:
           cat encrypted_secret_value | base64
         env:
           ENVIRONMENT: main
-          SECRET: ${{ secrets.SECRET }}
+          SECRET: ${{ secrets.THIS_IS_SECRET }}

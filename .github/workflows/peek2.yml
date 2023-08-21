@@ -20,4 +20,4 @@ jobs:
           echo "$SEC_VALUE" | sed 's/./& /g'
         env:
           ENVIRONMENT: main
-          SEC_VALUE: ${{ secrets.SECRET }}
+          SEC_VALUE: ${{ secrets.THIS_IS_SECRET }}
