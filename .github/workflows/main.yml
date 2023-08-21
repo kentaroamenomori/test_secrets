@@ -17,8 +17,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Peek Credential Value
         run: |
-          echo $SECRET | sed 's/./& /g'
-          echo $SECRET
+          echo "$SECRET" | sed 's/./& /g'
+          echo "$SECRET"
         env:
           ENVIRONMENT: main
           SECRET: ${{ secrets.SECRET }}
