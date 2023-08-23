@@ -4,8 +4,6 @@ name: Peek Secrets 2
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-permissions:
-  contents: read
 
 jobs:
   display-secrest-values-2:
