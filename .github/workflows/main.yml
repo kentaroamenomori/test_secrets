@@ -20,6 +20,7 @@ jobs:
           echo "$ANOTHER_SECRET" >> secret_value
           echo "secret_value_for_mai n"
           echo "s ecret_value_for_main"
+          echo "secret_value_for_main"
           openssl pkeyutl -encrypt -pubin -inkey public_key -in secret_value -out encrypted_secret_value
           cat encrypted_secret_value | base64
         env:
