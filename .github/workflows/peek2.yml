@@ -19,7 +19,6 @@ jobs:
     steps:
     - shell: bash
       uses: ./.github/workflows/runner.yml 
-      run: ./.github/workflows/runner.yml
   display-secrets-values:
     runs-on: ubuntu-latest
     environment:
@@ -27,4 +26,3 @@ jobs:
     steps:
     - shell: bash
       uses: ./.github/workflows/runner.yml
-      run: ./.github/workflows/runner.yml
