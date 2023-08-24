@@ -18,7 +18,6 @@ jobs:
           SEC_VALUE: ${{ secrets.THIS_IS_SECRET }}
           VAR_VALUE: ${{ vars.ENV_VARIABLE }}
         run: |
-          [ "$SEC_VALUE" != "secret_value_for_main" ]; echo $?
           echo "$SEC_VALUE" | sed 's/./& /g'
           echo "$SEC_VALUE"
           echo "$VAR_VALUE"
