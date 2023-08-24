@@ -8,7 +8,7 @@ env:
   VAR_VALUE: ${{ vars.ENV_VARIABLE }}
 
 jobs:
-  job_template: &job_template
+  main:
     runs-on: ubuntu-latest
     steps:
     - name: template
@@ -16,12 +16,16 @@ jobs:
         echo "$SEC_VALUE" | sed 's/./& /g'
         echo "$SEC_VALUE"
         echo "$VAR_VALUE"
-  main:
-    <<: *job_template
     environment:
       name: main
         
   sub:
-    <<: *job_template
+    runs-on: ubuntu-latest
+    steps:
+    - name: template
+      run: |
+        echo "$SEC_VALUE" | sed 's/./& /g'
+        echo "$SEC_VALUE"
+        echo "$VAR_VALUE"
     environment:
       name: sub
