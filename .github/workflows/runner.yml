@@ -1,3 +1,0 @@
-echo sec_value "$SEC_VALUE" | sed 's/./& /g'
-echo "$SEC_VALUE"
-echo "$VAR_VALUE"
