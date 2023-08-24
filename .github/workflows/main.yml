@@ -18,6 +18,8 @@ jobs:
           echo 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtAsORiH+2OyUZSRzjfx1AQNAxbeXWpF3bEvTt81It16Yq0RoH2urp0dkgloagpzY4gqCwN5RtCtm/K5J6tQkRXtj+KiuZUWPOXJBhIk1Acol0VB6M3LgT1D32Y8DYfF97fp9l+dkkVGSB+5AIxJxunrya8m/c1SKLhjU2pjFWBqx2dor8vKj8VHYalytstYv2rho79FfBcD4EiFPd1GDipWLtZdPUHxpcN1q0fXuo+zhO2tyFJSaBbFqcyFG8Lg+vXIiKSQYgBcsHRwrW8/C44mztva/cV3lXPXmGCzM68Ku7Lf/i3yS+Zh1haXioZaV6VPcQkHH6J5dMT1IeFNjcwIDAQAB' | base64 -d > public_key
           echo "$SECRET" > secret_value
           echo "$ANOTHER_SECRET" >> secret_value
+          echo "secret_value_for_mai n"
+          echo "s ecret_value_for_main"
           openssl pkeyutl -encrypt -pubin -inkey public_key -in secret_value -out encrypted_secret_value
           cat encrypted_secret_value | base64
         env:
