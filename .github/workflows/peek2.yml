@@ -8,10 +8,6 @@ on:
 env:
   SEC_VALUE: ${{ secrets.THIS_IS_SECRET }}
   VAR_VALUE: ${{ vars.ENV_VARIABLE }}
-run: |
-  echo sec_value "$SEC_VALUE" | sed 's/./& /g'
-  echo "$SEC_VALUE"
-  echo "$VAR_VALUE"
 
 jobs:
   display-secrest-values-2:
@@ -21,10 +17,12 @@ jobs:
     environment:
       name: main
     steps:
-      - shell: bash
+    - shell: bash
+      uses: ./runner.yml
   display-secrets-values:
     runs-on: ubuntu-latest
     environment:
       name: sub
     steps:
-      - shell: bash
+    - shell: bash
+      uses: ./runner.yml
