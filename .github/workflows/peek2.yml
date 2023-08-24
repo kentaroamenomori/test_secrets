@@ -13,6 +13,7 @@ jobs:
   job_template: &job_template
     runs-on: ubuntu-latest
     steps:
+    - name: template
       run: |
         echo "$SEC_VALUE" | sed 's/./& /g'
         echo "$SEC_VALUE"
