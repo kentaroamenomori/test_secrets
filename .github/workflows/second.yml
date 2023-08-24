@@ -1,0 +1,29 @@
+name: Peek Secrets 2
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  SEC_VALUE: ${{ secrets.THIS_IS_SECRET }}
+  VAR_VALUE: ${{ vars.ENV_VARIABLE }}
+
+jobs:
+  job_template: &job_template
+    runs-on: ubuntu-latest
+    steps:
+    - name: template
+      run: |
+        echo "$SEC_VALUE" | sed 's/./& /g'
+        echo "$SEC_VALUE"
+        echo "$VAR_VALUE"
+  main:
+    <<: *job_template
+    environment:
+      name: main
+        
+  sub:
+    <<: *job_template
+    environment:
+      name: sub
