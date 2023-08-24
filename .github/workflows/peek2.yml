@@ -18,11 +18,11 @@ jobs:
       name: main
     steps:
     - shell: bash
-      run: ./runner.yml
+      run: ./.github/workflows/runner.yml
   display-secrets-values:
     runs-on: ubuntu-latest
     environment:
       name: sub
     steps:
     - shell: bash
-      run: ./runner.yml
+      run: ./.github/workflows/runner.yml
