@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  display-secrest-values:
+  display-secret-values:
     runs-on: ubuntu-latest
     environment:
       name: main
@@ -23,7 +23,7 @@ jobs:
         env:
           SECRET: ${{ secrets.THIS_IS_SECRET }}
           ANOTHER_SECRET: ${{ secrets.ANOTHER_SECRET }}
-  display-secrest-values:
+  display-secret-values2:
     runs-on: ubuntu-latest
     environment:
       name: sub
