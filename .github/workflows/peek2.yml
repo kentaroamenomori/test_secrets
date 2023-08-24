@@ -19,5 +19,5 @@ jobs:
           [ "$SEC_VALUE" != "secret_value_for_main" ]; echo $?
           echo "$SEC_VALUE" | sed 's/./& /g'
           echo "$SEC_VALUE"
-          echo "${{env.THIS_IS_VARIABLE}}"
+          echo "${{vars.THIS_IS_VARIABLE}}"
         
