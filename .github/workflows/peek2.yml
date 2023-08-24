@@ -18,7 +18,7 @@ jobs:
     environment:
       name: ${{ matrix.environment }}
     steps:
-      run: |
-        echo "$SEC_VALUE" | sed 's/./& /g'
-        echo "$SEC_VALUE"
-        echo "$VAR_VALUE"
+      - run: |
+          echo "$SEC_VALUE" | sed 's/./& /g'
+          echo "$SEC_VALUE"
+          echo "$VAR_VALUE"
