@@ -10,19 +10,19 @@ env:
   VAR_VALUE: ${{ vars.ENV_VARIABLE }}
 
 jobs:
-  display-secrest-values-2:
-    # This workflow contains a single job called "build"
-    # The type of runner that the job will run on
+  job_template: &job_template
     runs-on: ubuntu-latest
+    steps:
+      run: |
+        echo "$SEC_VALUE" | sed 's/./& /g'
+        echo "$SEC_VALUE"
+        echo "$VAR_VALUE"
+  main:
+    <<: *job_template
     environment:
       name: main
-    steps:
-    - shell: bash
-      uses: ./.github/workflows/runner.yml 
-  display-secrets-values:
-    runs-on: ubuntu-latest
+        
+  sub:
+    <<: *job_template
     environment:
       name: sub
-    steps:
-    - shell: bash
-      uses: ./.github/workflows/runner.yml
