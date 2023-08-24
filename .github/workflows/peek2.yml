@@ -10,22 +10,14 @@ env:
 jobs:
   main:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: ['main', 'sub']
+    environment:
+      name: ${{ matrix.environment }}
     steps:
     - name: template
       run: |
         echo "$SEC_VALUE" | sed 's/./& /g'
         echo "$SEC_VALUE"
         echo "$VAR_VALUE"
-    environment:
-      name: main
-        
-  sub:
-    runs-on: ubuntu-latest
-    steps:
-    - name: template
-      run: |
-        echo "$SEC_VALUE" | sed 's/./& /g'
-        echo "$SEC_VALUE"
-        echo "$VAR_VALUE"
-    environment:
-      name: sub
